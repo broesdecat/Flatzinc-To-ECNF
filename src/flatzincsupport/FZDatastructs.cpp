@@ -129,11 +129,11 @@ void addBoolExpr(MBoolVar& var, const Expression& expr, std::stringstream& vars,
 	}else if(expr.type==EXPR_ARRAYACCESS){
 		var.hasmap = true;
 		var.mappedvar = getBoolVar(*expr.arrayaccesslit->id, expr.arrayaccesslit->index)->var;
-		theory <<"EQUIV C " <<var.var <<" | " <<var.mappedvar <<" 0\n";
+		theory <<"Equiv C " <<var.var <<" | " <<var.mappedvar <<" 0\n";
 	}else if(expr.type==EXPR_IDENT){
 		var.hasmap = true;
 		var.mappedvar = getBoolVar(*expr.ident->name)->var;
-		theory <<"EQUIV C " <<var.var <<" | " <<var.mappedvar <<" 0\n";
+		theory <<"Equiv C " <<var.var <<" | " <<var.mappedvar <<" 0\n";
 	}else{ throw fzexception("Unexpected type.\n"); }
 }
 

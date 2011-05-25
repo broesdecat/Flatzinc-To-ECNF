@@ -182,7 +182,7 @@ void InsertWrapper::writeRule(int head, const vector<int>& rhs, bool conj, int d
 	theory <<" 0\n";
 }
 void InsertWrapper::writeEquiv(int head, const vector<int>& rhs, bool conj){
-	theory <<"EQUIV " <<(conj?"D":"C") <<" " <<head <<" ";
+	theory <<"Equiv " <<(conj?"C":"D") <<" " <<head <<" ";
 	for(vector<int>::const_iterator i=rhs.begin(); i<rhs.end(); ++i){
 		theory <<*i <<" ";
 	}
@@ -455,14 +455,14 @@ void InsertWrapper::addOptim(Expression& expr, bool maxim){
 	if(intvar->range){
 		for(int i=intvar->begin; i<=intvar->end; ++i){
 			int tempvar = createOneShotVar();
-			theory <<"BINTRI " <<tempvar <<" " <<intvar->var <<" " <<i <<" 0\n";
+			addBinI(tempvar, intvar->var, "=", i);
 			minorderedlist.push_back(tempvar);
 		}
 	}else{
 		sort(intvar->values.begin(), intvar->values.end());
 		for(vector<int>::const_iterator i=intvar->values.begin(); i<=intvar->values.end(); ++i){
 			int tempvar = createOneShotVar();
-			theory <<"BINTRI " <<tempvar <<" " <<intvar->var <<" " <<*i <<" 0\n";
+			addBinI(tempvar, intvar->var, "=", *i);
 			minorderedlist.push_back(tempvar);
 		}
 	}

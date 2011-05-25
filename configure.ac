@@ -44,5 +44,5 @@ AC_ARG_ENABLE([build],
 esac],[		AC_CXXFLAGS+="-DNDEBUG -O3 " AC_LDFLAGS+=" "])
 
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT
